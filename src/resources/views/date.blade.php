@@ -27,16 +27,16 @@
         @foreach ($users as $user)
         <tr class="table__row">
             <td class="table__data">
-                <p>{{ $user['user']['name'] }}</p>
-            </td>
-            <td class="table__data">
-                <p>{{}}</p>
-            </td>
-            <td class="table__data">
                 <p></p>
             </td>
             <td class="table__data">
-                <p>00:30:00</p>
+                <p>{{$user['started_at']}}</p>
+            </td>
+            <td class="table__data">
+                <p>{{$user['ended_at']}}</p>
+            </td>
+            <td class="table__data">
+                <p></p>
             </td>
             <td class="table__data">
                 <p>09:30:00</p>
@@ -45,4 +45,12 @@
         @endforeach
     </table>
 </div>
+
+
+
+
+{{ $users }}
+
+
+
 @endsection

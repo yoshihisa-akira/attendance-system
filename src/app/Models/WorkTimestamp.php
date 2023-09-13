@@ -35,4 +35,29 @@ class WorkTimestamp extends Model
     }
 
     protected $appends = ['working_hours'];
+
+    public function date()
+    {
+        $users = WorkTimestamp::with('user')->get();
+
+        $records = array();
+
+        $userName = [];
+        $workedAt = [];
+        $endedAt = [];
+
+        foreach ($users as $user) {
+            $userName[] = $user['user']['name'];
+            $workedAt[] = $user['started_at'];
+            $endedAt[] = $user['ended_at'];
+
+            $record = array(
+                'user_name' => $userName,
+                'worked_at' => $workedAt,
+                'ended_at' => $endedAt
+            );
+
+            $records = array_merge($records, $record);
+        }
+    }
 }
